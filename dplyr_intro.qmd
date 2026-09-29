@@ -27,3 +27,44 @@ ggplot(diamonds, aes(x=carat, y=price)) +
   geom_point()
 ```
 
+## Focus on the 2 carat diamonds
+
+```{r}
+#| echo: true
+diamonds_2ct <- diamonds |> 
+  filter(abs(carat - 2) <= 0.1)
+```
+
+```{r}
+ggplot(diamonds_2ct, aes(x=carat, y=price)) +
+  geom_point()
+```
+```{r}
+nb_diamonds_near_2 <- diamonds_2ct |> nrow()
+nb_diamonds_below_2 <- diamonds_2ct |>
+  filter(carat < 2) |> 
+  nrow()
+```
+
+## Gap in the distribution
+
+There are:
+
+-  `r nb_diamonds_below_2` diamonds with weight between 1.9 and 1.99 carats
+-  `r nb_diamonds_near_2-nb_diamonds_below_2` diamonds with weight between 2 and
+   2.1 carats
+
+There is a clear gap in the distribution of the weights, with a very small number
+of diamonds just before 2 carats compared to the number of them just after 2 carats.
+
+## Price distribution for 2 to 2.1 carats
+
+```{r}
+diamonds_2ct |>
+  filter(carat >= 2) |>
+  ggplot(aes(x=carat, y=price, group=carat)) +
+    geom_boxplot()
+```
+
+
+ 
