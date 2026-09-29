@@ -4,6 +4,8 @@ author: "Fabrice Rossi"
 format: 
   revealjs:
     echo: false
+  pptx:
+    echo: false
 lightbox: true
 ---
 
