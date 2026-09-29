@@ -4,9 +4,26 @@ author: "Fabrice Rossi"
 format: 
   revealjs:
     echo: false
+lightbox: true
 ---
 
 ```{r}
 here::i_am("dplyr_101_gr1.Rproj")
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+data("diamonds")
+```
+
+## Diamond prices as function of their weight
+
+```{r}
+ggplot(diamonds, aes(x=carat, y=price)) +
+  geom_point()
 ```
 
